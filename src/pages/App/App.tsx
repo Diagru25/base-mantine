@@ -1,9 +1,11 @@
-import React, { FC, Suspense } from "react";
+import { FC, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
+
 import publicRoutes from "routes/route.public";
 import authRoutes from "routes/route.auth";
-import ErrorBoundary from "components/ErrorBoundary";
-import { Route, Routes } from "react-router-dom";
-import MainLayout from "pages/App/subcomponents/MainLayout";
+
+import ErrorBoundary from "components/ErrorBoundary/ErrorBoundary";
+import MainLayout from "components/Layout/MainLayout/MainLayout";
 
 const App: FC = () => {
   return (
