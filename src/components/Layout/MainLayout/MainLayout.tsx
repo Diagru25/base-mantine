@@ -1,4 +1,4 @@
-import { FC, useEffect, useLayoutEffect, useState } from "react";
+import { FC, useLayoutEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import {
@@ -8,8 +8,10 @@ import {
   ScrollArea,
   useMantineTheme,
 } from "@mantine/core";
+
+import useWindowDimensions from "utils/hooks";
+
 import { MainLinks } from "components/Navbar/test";
-import useWindowDimensions from "hooks/useWindowDimension";
 
 const MainLayout: FC = () => {
   const theme = useMantineTheme();

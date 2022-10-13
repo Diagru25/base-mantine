@@ -5,7 +5,7 @@ import publicRoutes from "routes/route.public";
 import authRoutes from "routes/route.auth";
 
 import ErrorBoundary from "components/ErrorBoundary/ErrorBoundary";
-import MainLayout from "components/Layout/MainLayout/MainLayout";
+import MainLayout from "components/Layout/MainLayout";
 
 const App: FC = () => {
   return (
