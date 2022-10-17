@@ -45,7 +45,7 @@ const MainLayout: FC = () => {
       }
       header={
         <Header height={60}>
-          <HeaderCustom />
+          <HeaderCustom trigger={() => setOpened(!opened)} />
         </Header>
       }
       styles={(theme) => ({
@@ -57,7 +57,6 @@ const MainLayout: FC = () => {
         },
       })}
     >
-      <button onClick={() => setOpened(!opened)}>click</button>
       <Outlet />
     </AppShell>
   );

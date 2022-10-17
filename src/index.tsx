@@ -19,13 +19,6 @@ const theme = {
   },
   fontFamily: "Noto Sans, Roboto, sans-serif",
   fontFamilyMonospace: "Noto Sans, Roboto, sans-serif",
-  fontSizes: {
-    xs: 10,
-    sm: 12,
-    md: 14,
-    lg: 16,
-    xl: 20,
-  },
 };
 
 const root = ReactDOM.createRoot(
