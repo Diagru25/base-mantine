@@ -30,7 +30,7 @@ const NavItem: FC<NavItemProps> = (props) => {
       label={props.label}
       icon={React.cloneElement(props.icon, {
         ...props.icon.props,
-        size: 18,
+        size: 20,
         stroke: isActive(props.link) ? 2 : 1.5,
       })}
       component={Link}
@@ -51,7 +51,7 @@ const NavItem: FC<NavItemProps> = (props) => {
       label={props.label}
       icon={React.cloneElement(props.icon, {
         ...props.icon.props,
-        size: 18,
+        size: 20,
         stroke: isNavOpened ? 2 : 1.5,
       })}
       opened={isNavOpened}
