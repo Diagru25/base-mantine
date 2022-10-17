@@ -11,7 +11,8 @@ import {
 
 import useWindowDimensions from "utils/hooks";
 
-import { MainLinks } from "components/Navbar/test";
+import NavbarCustom from "components/Navbar";
+import HeaderCustom from "components/Header";
 
 const MainLayout: FC = () => {
   const theme = useMantineTheme();
@@ -38,19 +39,13 @@ const MainLayout: FC = () => {
           hidden={opened}
         >
           <Navbar.Section grow component={ScrollArea} mx="-xs" px="xs">
-            <MainLinks />
-            <MainLinks />
-            <MainLinks />
-            <MainLinks />
-            <MainLinks />
-            <MainLinks />
-            <MainLinks />
+            <NavbarCustom />
           </Navbar.Section>
         </Navbar>
       }
       header={
-        <Header height={60} p="xs">
-          HEADER
+        <Header height={60}>
+          <HeaderCustom />
         </Header>
       }
       styles={(theme) => ({
