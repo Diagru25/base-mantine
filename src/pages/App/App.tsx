@@ -4,8 +4,9 @@ import { Route, Routes } from "react-router-dom";
 import publicRoutes from "routes/route.public";
 import authRoutes from "routes/route.auth";
 
-import ErrorBoundary from "components/ErrorBoundary/ErrorBoundary";
+import ErrorBoundary from "components/ErrorBoundary";
 import MainLayout from "components/Layout/MainLayout";
+import NotFoundPage from "components/NotFoundPage";
 
 const App: FC = () => {
   return (
@@ -41,6 +42,7 @@ const App: FC = () => {
             );
           })}
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </ErrorBoundary>
   );

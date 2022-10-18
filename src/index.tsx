@@ -11,8 +11,8 @@ import reportWebVitals from "./reportWebVitals";
 
 const theme = {
   breakpoints: {
-    xs: 500,
-    sm: 800,
+    xs: 576,
+    sm: 768,
     md: 1600,
     lg: 1920,
     xl: 2000,

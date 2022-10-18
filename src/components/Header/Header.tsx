@@ -1,18 +1,16 @@
-import { ActionIcon, Avatar, Group, Text } from "@mantine/core";
-import { IconMenu2 } from "@tabler/icons";
+import { Avatar, Burger, Group, Text } from "@mantine/core";
 import { FC } from "react";
 
 interface HeaderProps {
+  isOpen: boolean;
   trigger: () => void;
 }
 const Header: FC<HeaderProps> = (props) => {
-  const { trigger } = props;
+  const { isOpen, trigger } = props;
   return (
     <Group position="apart" style={{ height: "100%", padding: "0px 20px" }}>
       <Group spacing="sm">
-        <ActionIcon color="dark" variant="transparent" onClick={trigger}>
-          <IconMenu2 size={20} />
-        </ActionIcon>
+        <Burger opened={!isOpen} onClick={trigger} size="sm" color="black" />
         <Text
           component="span"
           align="center"

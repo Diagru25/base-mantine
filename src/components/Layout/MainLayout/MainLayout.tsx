@@ -33,7 +33,7 @@ const MainLayout: FC = () => {
       padding="md"
       navbar={
         <Navbar
-          width={{ base: 300 }}
+          width={{ sm: 300 }}
           p="xs"
           hiddenBreakpoint={opened ? "xl" : "sm"}
           hidden={opened}
@@ -45,7 +45,7 @@ const MainLayout: FC = () => {
       }
       header={
         <Header height={60}>
-          <HeaderCustom trigger={() => setOpened(!opened)} />
+          <HeaderCustom isOpen={opened} trigger={() => setOpened(!opened)} />
         </Header>
       }
       styles={(theme) => ({
