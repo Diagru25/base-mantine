@@ -1,3 +1,5 @@
+import { FC } from "react";
+import { Link } from "react-router-dom";
 import {
   Avatar,
   Stack,
@@ -7,11 +9,10 @@ import {
   useMantineTheme,
   Center,
   PasswordInput,
+  Group,
 } from "@mantine/core";
-import { FC } from "react";
 import { IconStar } from "@tabler/icons";
-import styles from "pages/Login/style.module.css";
-import { Link } from "react-router-dom";
+import styles from "./style.module.css";
 
 const Login: FC = () => {
   const theme = useMantineTheme();
@@ -46,18 +47,18 @@ const Login: FC = () => {
           borderColor: theme.colors.gray[3],
         }}
       >
-        <Text size="sm">
-          Chưa có tài khoản?{" "}
+        <Group position="center">
+          <Text size="sm">Chưa có tài khoản?</Text>
           <Text
             className={styles.link}
             component={Link}
             to={"/"}
             color="blue.5"
-            ml="xs"
+            size={"sm"}
           >
             Đăng ký ngay
           </Text>
-        </Text>
+        </Group>
       </Center>
       <Center
         style={{ fontSize: 12, color: theme.colors.blue[5], marginTop: "2rem" }}
