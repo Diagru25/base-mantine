@@ -65,3 +65,13 @@ body {
   font-weight: 700;
   font-size: 1.4em;
 }
+
+@media screen and (max-width: 576px) {
+  .title {
+    font-size: 3em;
+    padding-top: 3em;
+  }
+  .description {
+    font-size: 1.5em;
+  }
+}
