@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import {
   Avatar,
   Stack,
@@ -13,9 +13,22 @@ import {
 } from "@mantine/core";
 import { IconStar } from "@tabler/icons";
 import styles from "./style.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "redux/Auth/slice";
+import { RootState } from "configs/configureStore";
+import { DEFAULT } from "routes/route.constant";
 
 const Login: FC = () => {
+  const dispatch = useDispatch();
   const theme = useMantineTheme();
+  const { isLoggedIn } = useSelector((state: RootState) => state.authSlice);
+
+  const handleLogin = () => {
+    dispatch(login({ email: "hopbocau@gmail.com", password: "abcd1234" }));
+  };
+
+  if (isLoggedIn) return <Navigate to={DEFAULT} />;
+
   return (
     <Stack align="center" className={styles.wrapper}>
       <Avatar color="blue" radius="xl" size={48} mb="md">
@@ -36,7 +49,7 @@ const Login: FC = () => {
           <Input id="email" placeholder="Your email" />
         </Input.Wrapper>
         <PasswordInput placeholder="Password" label="Mật khẩu" withAsterisk />
-        <Button>Đăng nhập</Button>
+        <Button onClick={handleLogin}>Đăng nhập</Button>
       </Stack>
       <Center
         className={styles.form}

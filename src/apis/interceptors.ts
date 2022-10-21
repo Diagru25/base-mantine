@@ -4,10 +4,13 @@ import {
   AxiosRequestConfig,
   AxiosResponse,
 } from "axios";
+import { ACCESS_TOKEN } from "constants/types/localStorage";
+import { LOGIN } from "routes/route.constant";
 
 const onRequest = (config: AxiosRequestConfig): AxiosRequestConfig => {
   //console.info(`[request] [${JSON.stringify(config)}]`);
-  if (config.headers) config.headers = { Authorization: `Bearer abc` };
+  const token = localStorage.getItem(ACCESS_TOKEN);
+  if (config.headers) config.headers = { x_access_token: `${token}` };
   return config;
 };
 
@@ -17,12 +20,18 @@ const onRequestError = (error: AxiosError): Promise<AxiosError> => {
 };
 
 const onResponse = (response: AxiosResponse): AxiosResponse => {
-  console.info(`[response] [${JSON.stringify(response)}]`);
+  //console.info(`[response] [${JSON.stringify(response)}]`);
   return response;
 };
 
-const onResponseError = (error: AxiosError): Promise<AxiosError> => {
-  //console.error(`[response error] [${JSON.stringify(error)}]`);
+const onResponseError = (error: AxiosError): Promise<AxiosError> | any => {
+  //   console.error(`[response error] [${JSON.stringify(error)}]`);
+  console.log("inter: ", error);
+  if (error.response?.status === 401) {
+    const win: Window = window;
+    win.location =
+      window.location.protocol + "//" + window.location.host + LOGIN;
+  }
   return Promise.reject(error.response);
 };
 

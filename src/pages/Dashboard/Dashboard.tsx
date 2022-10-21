@@ -4,8 +4,8 @@ import { FC } from "react";
 const Dashboard: FC = () => {
   const handleTest = async () => {
     try {
-      const res = await authApi.login("hopbocau@gmail.com", "abcd12344");
-      console.log(res);
+    //   const res = await authApi.login("hopbocau@gmail.com", "abcd12344");
+    //   console.log(res);
     } catch (error) {
       console.log("error", error);
     }

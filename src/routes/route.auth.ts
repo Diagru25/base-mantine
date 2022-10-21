@@ -1,2 +1,3 @@
 import DashboardRoute from "pages/Dashboard/route";
-export default [DashboardRoute];
+import ProfileRoute from "pages/Profile/route";
+export default [DashboardRoute, ProfileRoute];

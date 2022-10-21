@@ -25,15 +25,15 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <MantineProvider withGlobalStyles theme={theme}>
-      <Provider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </Provider>
-    </MantineProvider>
-  </React.StrictMode>
+  //   <React.StrictMode>
+  <MantineProvider withGlobalStyles theme={theme}>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </MantineProvider>
+  //   </React.StrictMode>
 );
 
 reportWebVitals();

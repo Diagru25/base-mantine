@@ -1,5 +1,5 @@
-import { FC, useLayoutEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { FC, useEffect, useLayoutEffect, useState } from "react";
+import { Outlet, Navigate } from "react-router-dom";
 
 import {
   AppShell,
@@ -13,10 +13,17 @@ import useWindowDimensions from "utils/hooks";
 
 import NavbarCustom from "components/Navbar";
 import HeaderCustom from "components/Header";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "configs/configureStore";
+import { LOGIN } from "routes/route.constant";
+import { checkSession } from "redux/Auth/slice";
 
 const MainLayout: FC = () => {
+  const dispatch = useDispatch();
   const theme = useMantineTheme();
   const { width } = useWindowDimensions();
+
+  const { isLoggedIn } = useSelector((state: RootState) => state.authSlice);
   const [opened, setOpened] = useState(false);
 
   useLayoutEffect(() => {
@@ -26,6 +33,12 @@ const MainLayout: FC = () => {
     }
     return setOpened(false);
   }, [width]);
+
+  useEffect(() => {
+    dispatch(checkSession());
+  }, []);
+
+  if (!isLoggedIn) return <Navigate to={LOGIN} replace />;
 
   return (
     <AppShell

@@ -1,5 +1,5 @@
 import { FC, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import publicRoutes from "routes/route.public";
 import authRoutes from "routes/route.auth";
@@ -7,6 +7,7 @@ import authRoutes from "routes/route.auth";
 import ErrorBoundary from "components/ErrorBoundary";
 import MainLayout from "components/Layout/MainLayout";
 import NotFoundPage from "components/NotFoundPage";
+import { DASHBOARD } from "routes/route.constant";
 
 const App: FC = () => {
   return (
@@ -27,6 +28,7 @@ const App: FC = () => {
           );
         })}
         <Route element={<MainLayout />}>
+          <Route path="/" element={<Navigate to={DASHBOARD} />} />
           {authRoutes.map(({ path, element }) => {
             const Element: FC = element;
             return (

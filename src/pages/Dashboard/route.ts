@@ -1,8 +1,8 @@
 import { lazy } from "react";
-import { DEFAULT } from "routes/route.constant";
+import { DASHBOARD } from "routes/route.constant";
 const Dashboard = lazy(() => import("pages/Dashboard"));
 
 export default {
-  path: DEFAULT,
+  path: DASHBOARD,
   element: Dashboard,
 };

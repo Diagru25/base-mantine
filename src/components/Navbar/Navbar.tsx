@@ -19,8 +19,8 @@ const NavbarCustom: FC = () => {
       color: "red",
       children: [
         {
-          label: "Group children 1",
-          link: "/",
+          label: "Profile",
+          link: "/profile",
         },
         {
           label: "Group children 2",

@@ -50,4 +50,5 @@ export const request = (obj: RequestProps): Promise<any> => {
       });
   });
 };
+
 export default instance;
