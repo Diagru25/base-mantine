@@ -21,9 +21,12 @@ const NavItem: FC<NavItemProps> = (props) => {
   const location = useLocation();
   const [isNavOpened, setIsNavOpened] = useState(false);
 
-  const isActive = useCallback((link: string) => {
-    return location.pathname === link ? true : false;
-  }, []);
+  const isActive = useCallback(
+    (link: string) => {
+      return location.pathname === link ? true : false;
+    },
+    [props.link, props.children, location.pathname]
+  );
 
   return props.children.length === 0 ? (
     <NavLink

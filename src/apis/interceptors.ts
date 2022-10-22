@@ -26,7 +26,6 @@ const onResponse = (response: AxiosResponse): AxiosResponse => {
 
 const onResponseError = (error: AxiosError): Promise<AxiosError> | any => {
   //   console.error(`[response error] [${JSON.stringify(error)}]`);
-  console.log("inter: ", error);
   if (error.response?.status === 401) {
     const win: Window = window;
     win.location =

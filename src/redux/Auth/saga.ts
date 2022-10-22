@@ -4,6 +4,9 @@ import { LoginData } from "constants/types/auth";
 import { ACCESS_TOKEN } from "constants/types/localStorage";
 import { put, takeLatest } from "redux-saga/effects";
 import { login, checkSession, updateState } from "redux/Auth/slice";
+import { useNotification } from "utils/hooks";
+
+const { notification } = useNotification();
 
 function* loginSaga(action: PayloadAction<LoginData>): unknown {
   try {
@@ -15,10 +18,10 @@ function* loginSaga(action: PayloadAction<LoginData>): unknown {
         type: updateState.type,
         payload: { isLoggedIn: true },
       });
+      notification.success("Đăng nhập thành công", "");
     }
-    // eslint-disable-next-line no-empty
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
+    notification.error("Đăng nhập không thành công", error?.data?.message);
   }
 }
 

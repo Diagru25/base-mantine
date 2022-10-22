@@ -1,5 +1,11 @@
 import { FC } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "redux/Auth/slice";
+import { RootState } from "configs/configureStore";
+import { DEFAULT } from "routes/route.constant";
 import { Link, Navigate } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import {
   Avatar,
   Stack,
@@ -13,19 +19,41 @@ import {
 } from "@mantine/core";
 import { IconStar } from "@tabler/icons";
 import styles from "./style.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "redux/Auth/slice";
-import { RootState } from "configs/configureStore";
-import { DEFAULT } from "routes/route.constant";
+import { LoginData } from "constants/types/auth";
+
+type FormLoginData = {
+  accessValue: string;
+  password: string;
+};
+
+const loginSchema = Yup.object().shape({
+  accessValue: Yup.string().required(
+    "Email/Số điện thoại/Tên đăng nhập không được để trống."
+  ),
+});
 
 const Login: FC = () => {
   const dispatch = useDispatch();
   const theme = useMantineTheme();
   const { isLoggedIn } = useSelector((state: RootState) => state.authSlice);
 
-  const handleLogin = () => {
-    dispatch(login({ email: "hopbocau@gmail.com", password: "abcd1234" }));
+  const initialValue: FormLoginData = {
+    accessValue: "",
+    password: "",
   };
+
+  const formLogin = useFormik({
+    initialValues: initialValue,
+    validationSchema: loginSchema,
+    onSubmit: async (data) => {
+      const loginData: LoginData = {
+        email: data.accessValue,
+        password: data.password,
+      };
+
+      dispatch(login(loginData));
+    },
+  });
 
   if (isLoggedIn) return <Navigate to={DEFAULT} />;
 
@@ -45,11 +73,29 @@ const Login: FC = () => {
           borderColor: theme.colors.gray[3],
         }}
       >
-        <Input.Wrapper id="email" label="Username hoặc email" error="">
-          <Input id="email" placeholder="Your email" />
+        <Input.Wrapper
+          id="accessValue"
+          label="Username hoặc email"
+          error={formLogin.errors.accessValue}
+          withAsterisk
+        >
+          <Input
+            id="accessValue"
+            placeholder="Your email"
+            value={formLogin.values.accessValue}
+            //onChange={(e: any) => console.log(e.target.value)}
+            onChange={formLogin.handleChange}
+          />
         </Input.Wrapper>
-        <PasswordInput placeholder="Password" label="Mật khẩu" withAsterisk />
-        <Button onClick={handleLogin}>Đăng nhập</Button>
+        <PasswordInput
+          id="password"
+          placeholder="Password"
+          label="Mật khẩu"
+          error={formLogin.errors.password}
+          value={formLogin.values.password}
+          onChange={formLogin.handleChange}
+        />
+        <Button onClick={() => formLogin.handleSubmit()}>Đăng nhập</Button>
       </Stack>
       <Center
         className={styles.form}

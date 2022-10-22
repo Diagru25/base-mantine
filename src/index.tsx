@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { MantineProvider } from "@mantine/core";
+import { NotificationsProvider } from "@mantine/notifications";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
@@ -27,11 +28,17 @@ const root = ReactDOM.createRoot(
 root.render(
   //   <React.StrictMode>
   <MantineProvider withGlobalStyles theme={theme}>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
+    <NotificationsProvider
+      position="top-right"
+      zIndex={2077}
+      containerWidth={350}
+    >
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </NotificationsProvider>
   </MantineProvider>
   //   </React.StrictMode>
 );

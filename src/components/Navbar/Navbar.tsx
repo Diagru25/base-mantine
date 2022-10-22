@@ -1,14 +1,14 @@
 import { FC } from "react";
 import { IconHome, IconDashboard } from "@tabler/icons";
 import NavItem from "./NavItem";
-import { DEFAULT } from "routes/route.constant";
+import { DASHBOARD, PROFILE } from "routes/route.constant";
 
 const NavbarCustom: FC = () => {
   const data = [
     {
       icon: <IconHome />,
       label: "Trang chủ",
-      link: DEFAULT,
+      link: DASHBOARD,
       color: "red",
       children: [],
     },
@@ -20,7 +20,7 @@ const NavbarCustom: FC = () => {
       children: [
         {
           label: "Profile",
-          link: "/profile",
+          link: PROFILE,
         },
         {
           label: "Group children 2",

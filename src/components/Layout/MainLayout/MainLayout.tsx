@@ -9,7 +9,7 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 
-import useWindowDimensions from "utils/hooks";
+import { useWindowDimensions } from "utils/hooks";
 
 import NavbarCustom from "components/Navbar";
 import HeaderCustom from "components/Header";
