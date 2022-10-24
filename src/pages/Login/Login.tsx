@@ -18,8 +18,8 @@ import {
   Group,
 } from "@mantine/core";
 import { IconStar } from "@tabler/icons";
-import styles from "./style.module.css";
 import { LoginData } from "constants/types/auth";
+import styles from "./style.module.css";
 
 type FormLoginData = {
   accessValue: string;

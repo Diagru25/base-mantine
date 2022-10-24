@@ -1,4 +1,5 @@
-import { Avatar, Burger, Group, Text } from "@mantine/core";
+import { Burger, Group, Text } from "@mantine/core";
+import MenuProfile from "components/MenuProfile";
 import { FC } from "react";
 
 interface HeaderProps {
@@ -27,12 +28,7 @@ const Header: FC<HeaderProps> = (props) => {
         </Text>
       </Group>
       <Group>
-        <Avatar
-          size={34}
-          radius="xl"
-          src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80"
-          alt="it's me"
-        />
+        <MenuProfile />
       </Group>
     </Group>
   );

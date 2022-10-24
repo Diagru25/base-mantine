@@ -8,15 +8,15 @@ import {
   ScrollArea,
   useMantineTheme,
 } from "@mantine/core";
+import { useDispatch, useSelector } from "react-redux";
 
+import { checkSession } from "redux/Auth/slice";
+import { RootState } from "configs/configureStore";
 import { useWindowDimensions } from "utils/hooks";
+import { LOGIN } from "routes/route.constant";
 
 import NavbarCustom from "components/Navbar";
 import HeaderCustom from "components/Header";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "configs/configureStore";
-import { LOGIN } from "routes/route.constant";
-import { checkSession } from "redux/Auth/slice";
 
 const MainLayout: FC = () => {
   const dispatch = useDispatch();
